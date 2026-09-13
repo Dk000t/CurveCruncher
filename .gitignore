@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Track only these
+!LICENSE
+!README.md
+!.gitignore
+!/src/
+!/src/**
