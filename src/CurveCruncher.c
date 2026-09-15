@@ -153,7 +153,7 @@ int main (int argc, char **argv) {
 
         pid_t child = fork();
         if (child < 0) {
-            perror("Error: child process creation error");
+            fprintf(stderr, "Error: child process creation error");
             exit(EXIT_FAILURE);
         }
 
@@ -167,7 +167,7 @@ int main (int argc, char **argv) {
             }
 
             execl(PROGRAM, PROGRAM, "config", RAM_CFG_PATH, (char*)NULL);
-            perror("Error: child process failed to execute task");
+            fprintf(stderr, "Error: child process failed to execute task");
             _exit(EXIT_FAILURE);
         }
 
@@ -176,7 +176,7 @@ int main (int argc, char **argv) {
             if (errno == EINTR) {
                 if (stop_requested) break;
             } else {
-                perror("Error in waitpid");
+                fprintf(stderr, "Error in waitpid");
                 break;
             }
         }
